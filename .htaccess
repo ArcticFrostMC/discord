@@ -8,6 +8,8 @@ DirectoryIndex index.html
 
 RewriteEngine on
 
+Redirect /index https://discord.gg/fEcg2vX
+
 # does not apply to apply to existing directories, meaning that if the folder exists on the server then don't change anything and don't run the Rule!
 
 RewriteCond %{REQUEST_FILENAME} !-d
