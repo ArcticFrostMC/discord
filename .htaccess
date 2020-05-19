@@ -1,12 +1,10 @@
 Options +FollowSymLinks -MultiViews
-redirect index.html home.html
-ErrorDocument 404 /404.html
-
-DirectoryIndex index.html
 
 # mod_rewrite starts here
 
 RewriteEngine on
+
+Redirect /index.html https://discord.gg/fEcg2vX
 
 # does not apply to apply to existing directories, meaning that if the folder exists on the server then don't change anything and don't run the Rule!
 
@@ -28,21 +26,3 @@ RewriteRule (.*)index\.(php|html)$ /$1 [R=301,L]
 
 RewriteRule ^(.*)$ $1.html [NC, L]
 RewriteRule ^(.*)$ $1.php [NC, L]
-
-# 404
-
-RewriteCond %{REQUEST_URI} \.html$
-RewriteCond %{QUERY_STRING} !rw=1 [NC]
-RewriteRule ^ - [R=404]
-
-#Rewrite
-
-RewriteRule ^([0-9]+).html /home [QSA,L]
-
-#Hide Home from url
-
-RewriteCond %{REQUEST_URI} !^arcticfrostmc.com/staff/index [NC]
-RewriteRule ^arcticfrostmc.com/staff(.*)$ arcticfrostmc.com/$1 [L]
-
-RewriteCond %{REQUEST_URI} !^arcticfrostmc.com/staff/index.html [NC]
-RewriteRule ^arcticfrostmc.com/staff/(.*)$ arcticfrostmc.com/$1 [L]
